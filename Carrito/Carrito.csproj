@@ -67,11 +67,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="carrito.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="VerDetalle.aspx" />
     <Content Include="Web.config" />
     <Content Include="default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="carrito.aspx.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="carrito.aspx.designer.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -89,6 +98,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerDetalle.aspx.cs">
+      <DependentUpon>VerDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerDetalle.aspx.designer.cs">
+      <DependentUpon>VerDetalle.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
