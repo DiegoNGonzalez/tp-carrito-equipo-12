@@ -33,6 +33,7 @@
      <p class="card-text">$<%:articulo.PrecioArticulo %></p>
     
      <asp:LinkButton id="btnAgregar" Text="agregar" runat="server" CssClass="btn btn-primary" OnClick="btnAgregar_Click"/>
+     <asp:LinkButton id="verDetalle" Text="Ver Detalle" runat="server" CssClass="btn btn-primary" href="verdetalle.aspx"/>
     </div>
 </div>
             <%}
