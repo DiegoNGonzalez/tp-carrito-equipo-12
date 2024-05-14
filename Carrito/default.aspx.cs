@@ -27,33 +27,6 @@ namespace Carrito
             }
         }
 
-        private void CargarGrid()
-        {
-            try
-            {
-                articulos = negocio.ListarArticulos();
-                if (articulos.Count == 0)
-                {
-                    dgvArticulos.DataSource = null;
-                    //pBoxArticulosFormArticulos.Load("https://i0.wp.com/static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg?ssl=1");
-                }
-                else
-                {
-                    dgvArticulos.DataSource = articulos;
-                    dgvArticulos.DataBind();
-                    Session.Add("listaArticulos", articulos);
-                    //dgvArticulos.Columns["IdArticulo"].Visible = false;
-                    //dgvArticulos.Columns["DescripcionArticulo"].Visible = false;
-                    //dgvArticulos.Columns["CategoriaArticulo"].Visible = false;
-                    //dgvArticulos.Columns["PrecioArticulo"].DataGridView.Columns["PrecioArticulo"].DefaultCellStyle.Format = "$0.00";
-                    //pBoxArticulosFormArticulos.Load(listaArticulos[0].Imagenes[0].URLImagen);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
 
         protected void btnAgregar_Click(object sender, EventArgs e)
