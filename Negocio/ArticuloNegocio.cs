@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dominio;
 using AccesoDataBase;
+using System.Runtime.Remoting.Messaging;
 
 namespace Negocio
 {
@@ -24,7 +25,7 @@ namespace Negocio
             List<Articulo> Lista = new List<Articulo>();
             try
             {
-                if (consulta!= null)
+                if (consulta != null)
                 {
                     Datos.SetearConsulta(consulta);
 
@@ -45,18 +46,18 @@ namespace Negocio
                     aux.PrecioArticulo = (decimal)Datos.Lector["Precio"];
                     aux.MarcaArticulo = new Marca();
                     aux.MarcaArticulo.IDMarca = (int)Datos.Lector["IdMarca"];
-                    aux.MarcaArticulo.NombreMarca= (string)Datos.Lector["Marca"];
+                    aux.MarcaArticulo.NombreMarca = (string)Datos.Lector["Marca"];
                     aux.CategoriaArticulo = new Categoria();
                     aux.CategoriaArticulo.IDCategoria = (int)Datos.Lector["IdCategoria"];
                     aux.CategoriaArticulo.NombreCategoria = (string)Datos.Lector["Categoria"];
-                    
-                    
+
+
                     Lista.Add(aux);
-                }   
+                }
 
                 foreach (var articulo in Lista)
                 {
-                    
+
                     articulo.Imagenes = Imagenes.Listarimagenes(articulo.IDArticulo);
                 }
                 return Lista;
@@ -95,16 +96,16 @@ namespace Negocio
                 finally { Datos.CerrarConexion(); }
                 int ID = ObtenerUltimoID();
                 Imagenes.AgregarImagen(ID, Nuevo.Imagenes[0].URLImagen);
-                
-                
-                
+
+
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            finally { Datos.CerrarConexion();}
+            finally { Datos.CerrarConexion(); }
         }
 
         public void ModificarArticulo(Articulo Modificado)
@@ -139,7 +140,7 @@ namespace Negocio
         {
             try
             {
-                Datos.SetearConsulta("DELETE FROM ARTICULOS WHERE Id ="+ID);
+                Datos.SetearConsulta("DELETE FROM ARTICULOS WHERE Id =" + ID);
                 Datos.EjecutarAccion();
 
             }
@@ -148,9 +149,9 @@ namespace Negocio
 
                 throw;
             }
-            finally 
+            finally
             {
-                Datos.CerrarConexion(); 
+                Datos.CerrarConexion();
             }
         }
 
@@ -186,6 +187,32 @@ namespace Negocio
                 throw ex;
             }
             finally { Datos.CerrarConexion(); }
+        }
+
+        public Articulo encontrarArticuloXid(int idBuscado)
+        {
+
+            Datos.SetearConsulta("select  a.Id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, c.ID IdCategoria, c.Descripcion as 'Categoria', m.Descripcion as 'Marca', m.ID IdMarca FROM ARTICULOS a, Categorias c, Marcas m where a.IdCategoria= c.Id and a.IdMarca = m.Id and a.Id ="+ idBuscado);
+
+            Datos.EjecutarLectura();
+
+               Articulo aux = new Articulo();
+            while (Datos.Lector.Read())
+            {
+                aux.IDArticulo = Datos.Lector.GetInt32(0);
+                aux.CodigoArticulo = (string)Datos.Lector["Codigo"];
+                aux.NombreArticulo = (string)Datos.Lector["Nombre"];
+                aux.DescripcionArticulo = (string)Datos.Lector["Descripcion"];
+                aux.PrecioArticulo = (decimal)Datos.Lector["Precio"];
+                aux.MarcaArticulo = new Marca();
+                aux.MarcaArticulo.IDMarca = (int)Datos.Lector["IdMarca"];
+                aux.MarcaArticulo.NombreMarca = (string)Datos.Lector["Marca"];
+                aux.CategoriaArticulo = new Categoria();
+                aux.CategoriaArticulo.IDCategoria = (int)Datos.Lector["IdCategoria"];
+                aux.CategoriaArticulo.NombreCategoria = (string)Datos.Lector["Categoria"];
+                aux.Imagenes = Imagenes.Listarimagenes(aux.IDArticulo);
+            }
+            return aux;
         }
     }
 }
