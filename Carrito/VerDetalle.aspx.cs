@@ -32,7 +32,7 @@ namespace Carrito
                     }
                     else
                     {
-                        imgArticulo.ImageUrl = "~/Images/imagen_por_defecto.jpg"; // Ruta de una imagen por defecto
+                        imgArticulo.ImageUrl = "~/Images/imagen_por_defecto.jpg"; 
                     }
                 }
             }

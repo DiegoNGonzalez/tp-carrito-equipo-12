@@ -23,15 +23,15 @@ namespace Carrito
             articulos = negocio.ListarArticulos();
             rptArticulos.DataSource = articulos;
             rptArticulos.DataBind();
-            contadorCarrito = (Label)Master.FindControl("contadorCarrito");
             }
+            contadorCarrito = (Label)Master.FindControl("contadorCarrito");
         }
 
 
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            contadorCarrito.Text = (Convert.ToInt32(contadorCarrito.Text) + 1).ToString();
+            
         }
         protected void rptArticulos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
