@@ -14,7 +14,6 @@ namespace Carrito
     public partial class carrito : System.Web.UI.Page
     {
         public decimal Total { get; set; } = 0;
-
         public List<ArticuloEnCarrito> articulosEnCarrito = new List<ArticuloEnCarrito>();
         protected void Page_Load(object sender, EventArgs e)
         {

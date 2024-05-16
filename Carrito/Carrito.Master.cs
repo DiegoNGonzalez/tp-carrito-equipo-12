@@ -11,7 +11,7 @@ namespace Carrito
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            contadorCarrito.Text = Session["ContadorArticulos"] != null ? Session["ContadorArticulos"].ToString() : "0";
         }
     }
 }

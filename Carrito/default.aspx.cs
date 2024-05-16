@@ -16,6 +16,7 @@ namespace Carrito
         public List<ArticuloEnCarrito> articulosEnCarrito = new List<ArticuloEnCarrito>();
         private ArticuloNegocio negocio = new ArticuloNegocio();
         public Label contadorCarrito = new Label();
+        public int contadorArticulos = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,6 +28,8 @@ namespace Carrito
             Session.Add("articulos", articulos);
             }
             contadorCarrito = (Label)Master.FindControl("contadorCarrito");
+            
+            
         }
 
 
@@ -46,6 +49,9 @@ namespace Carrito
                 string idArticulo = e.CommandArgument.ToString();
                 Session.Add("idArticuloAgregar", idArticulo);
                 AgregarAlCarrito();
+                contadorArticulos = Session["ContadorArticulos"] != null ? Convert.ToInt32(Session["ContadorArticulos"]) + 1 : 1;
+                Session.Add("ContadorArticulos", contadorArticulos);
+                Response.Redirect("default.aspx", false);
             }
         }
         public void AgregarAlCarrito()
@@ -84,6 +90,8 @@ namespace Carrito
                 articulosEnCarrito.Add(articuloEnCarrito);
                 Session.Add("articulosEnCarrito", articulosEnCarrito);
             }
+            
+
         }
         public bool ExisteEnCarrito(int id)
         {
