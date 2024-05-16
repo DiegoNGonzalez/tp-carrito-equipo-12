@@ -23,6 +23,7 @@ namespace Carrito
             articulos = negocio.ListarArticulos();
             rptArticulos.DataSource = articulos;
             rptArticulos.DataBind();
+            Session.Add("articulos", articulos);
             }
             contadorCarrito = (Label)Master.FindControl("contadorCarrito");
         }
@@ -39,7 +40,12 @@ namespace Carrito
             {
                 string idArticulo = e.CommandArgument.ToString();
                 Response.Redirect("VerDetalle.aspx?idArticulo=" + idArticulo, false);
+            } else if(e.CommandName == "Agregar")
+            {
+                string idArticulo = e.CommandArgument.ToString();
+                Session.Add("idArticuloAgregar", idArticulo);
             }
         }
+
     }
 }

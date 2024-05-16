@@ -10,8 +10,6 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
-
-
                 <asp:Repeater ID="rptArticulos" runat="server" OnItemCommand="rptArticulos_ItemCommand">
                     <ItemTemplate>
                         <div class="card" style="width: 18rem;">
@@ -20,7 +18,7 @@
                                 <h5 class="card-title"><%# Eval("NombreArticulo") %></h5>
                                 <p class="card-text"><%# Eval("DescripcionArticulo") %></p>
                                 <p class="card-text">$<%# Eval("PrecioArticulo") %></p>
-                                <asp:LinkButton ID="btnAgregar" Text="agregar" runat="server" CssClass="btn btn-primary" OnClick="btnAgregar_Click" />
+                                <asp:LinkButton ID="btnAgregar" Text="agregar" runat="server" CssClass="btn btn-primary" CommandName="Agregar" CommandArgument='<%# Eval("IDArticulo") %>' />
                                 <asp:LinkButton ID="btnVerDetalle" Text="Ver Detalle" runat="server" CssClass="btn btn-primary" CommandName="VerDetalle" CommandArgument='<%# Eval("IDArticulo") %>' />
                             </div>
                         </div>
