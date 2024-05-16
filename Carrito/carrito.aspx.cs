@@ -1,4 +1,4 @@
-﻿using Dominio;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,25 +18,10 @@ namespace Carrito
         {
             if (!IsPostBack)
             {
-                if (Session["articulosEnCarrito"] != null)
-                {
+              
                     articulosEnCarrito = (List<ArticuloEnCarrito>)Session["articulosEnCarrito"];
-                }
-                else
-                {
-                    List<Articulo> listArticulos = (List<Articulo>)Session["articulos"];
-
-                    int id = Convert.ToInt32(Session["idArticuloAgregar"]);
-                    Articulo auxArticuloId = listArticulos.Find(x => x.IDArticulo == id); 
-
-                    ArticuloEnCarrito articuloEnCarrito = new ArticuloEnCarrito(auxArticuloId);
-
-                    articulosEnCarrito = new List<ArticuloEnCarrito>();
-                    articulosEnCarrito.Add(articuloEnCarrito);
-                    //Falta agregar en Session los ArticulosEnCarrito.
-                }
-                rptArticulosEnCarrito.DataSource = articulosEnCarrito;
-                rptArticulosEnCarrito.DataBind();
+                    rptArticulosEnCarrito.DataSource = articulosEnCarrito;
+                    rptArticulosEnCarrito.DataBind();
             }
         }
     }

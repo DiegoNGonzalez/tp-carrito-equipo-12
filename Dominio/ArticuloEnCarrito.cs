@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace dominio
 {
     public class ArticuloEnCarrito: Articulo
     {
@@ -25,6 +25,7 @@ namespace Dominio
         }
         public ArticuloEnCarrito(Articulo aux)
         {
+            this.IDArticulo = aux.IDArticulo;
             this.NombreArticulo = aux.NombreArticulo;
             this.DescripcionArticulo = aux.DescripcionArticulo;
             this.PrecioArticulo = aux.PrecioArticulo;

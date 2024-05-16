@@ -14,10 +14,12 @@
                 <ItemTemplate>
                     <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
+                            <img src="<%# Eval("Imagenes[0].URLImagen") %>" class="img-fluid" alt="...">
                             <h5 class="mb-1"><%# Eval("NombreArticulo") %></h5>
-                            <small>3 days ago</small>
+                            <p>x<%#Eval("Cantidad") %></p>
+                            <small>$<%#Eval("Subtotal") %></small>
                         </div>
-                        <p class="mb-1">Some placeholder content in a paragraph.</p>
+                        <p class="mb-1"><%# Eval("DescripcionArticulo") %></p>
                         <small>And some small print.</small>
                     </a>
 

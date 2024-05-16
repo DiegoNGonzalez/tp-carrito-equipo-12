@@ -13,6 +13,7 @@ namespace Carrito
     public partial class WebForm1 : System.Web.UI.Page
     {
         public List<Articulo> articulos = new List<Articulo>();
+        public List<ArticuloEnCarrito> articulosEnCarrito = new List<ArticuloEnCarrito>();
         private ArticuloNegocio negocio = new ArticuloNegocio();
         public Label contadorCarrito = new Label();
         protected void Page_Load(object sender, EventArgs e)
@@ -44,8 +45,57 @@ namespace Carrito
             {
                 string idArticulo = e.CommandArgument.ToString();
                 Session.Add("idArticuloAgregar", idArticulo);
+                AgregarAlCarrito();
             }
         }
+        public void AgregarAlCarrito()
+        {
+            if (Session["articulosEnCarrito"] != null)
+            {
+                articulosEnCarrito = (List<ArticuloEnCarrito>)Session["articulosEnCarrito"];
+                articulos = (List<Articulo>)Session["articulos"];
+                int id = Convert.ToInt32(Session["idArticuloAgregar"]);
+                Articulo auxArticuloId = articulos.Find(x => x.IDArticulo == id);
+                bool existe = ExisteEnCarrito(id);
+                if (existe)
+                {
+                    ArticuloEnCarrito auxArticuloEnCarrito = articulosEnCarrito.Find(x => x.IDArticulo == id);
+                    auxArticuloEnCarrito.Cantidad++;
+                    auxArticuloEnCarrito.Subtotal = auxArticuloEnCarrito.Cantidad * auxArticuloEnCarrito.PrecioArticulo;
+                    Session.Add("articulosEnCarrito", articulosEnCarrito);
+                    return;
+                }
+                else
+                {
+                    ArticuloEnCarrito articuloEnCarrito = new ArticuloEnCarrito(auxArticuloId);
+                    articulosEnCarrito.Add(articuloEnCarrito);
+                    Session.Add("articulosEnCarrito", articulosEnCarrito);
+                }
+                   
 
+
+            }else
+            {
+                articulos = (List<Articulo>)Session["articulos"];
+                int id = Convert.ToInt32(Session["idArticuloAgregar"]);
+                Articulo auxArticuloId = articulos.Find(x => x.IDArticulo == id);
+
+                ArticuloEnCarrito articuloEnCarrito = new ArticuloEnCarrito(auxArticuloId);
+                articulosEnCarrito.Add(articuloEnCarrito);
+                Session.Add("articulosEnCarrito", articulosEnCarrito);
+            }
+        }
+        public bool ExisteEnCarrito(int id)
+        {
+            if (Session["articulosEnCarrito"] != null)
+            {
+                articulosEnCarrito = (List<ArticuloEnCarrito>)Session["articulosEnCarrito"];
+                if (articulosEnCarrito.Find(x => x.IDArticulo == id) != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
