@@ -120,6 +120,32 @@ namespace Carrito
             }
             return false;
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text;
+            List<Articulo> lista = (List<Articulo>)Session["articulos"];
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.NombreArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.DescripcionArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.MarcaArticulo.NombreMarca.Contains(busqueda.ToUpper())|| x.CategoriaArticulo.NombreCategoria.Contains(busqueda.ToUpper()));
+            if (listaFiltrada.Count == 0)
+            {
+                lblMensaje.Text = "No se encontraron resultados";
+            }
+            else
+            {
+                rptArticulos.DataSource = listaFiltrada;
+
+            }
+            rptArticulos.DataBind();
+
+        }
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Text = "";
+            List<Articulo> lista = (List<Articulo>)Session["articulos"];
+            rptArticulos.DataSource = lista;
+            rptArticulos.DataBind();
+            lblMensaje.Text = "";
+        }
         
     }
 }
