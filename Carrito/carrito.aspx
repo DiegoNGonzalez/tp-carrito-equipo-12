@@ -19,7 +19,7 @@
                         <th scope="col">Cantidad</th>
                     </tr>
                 </thead>
-                <asp:Repeater ID="rptArticulosEnCarrito" runat="server" >
+                <asp:Repeater ID="rptArticulosEnCarrito" runat="server">
                     <ItemTemplate>
                         <tbody>
                             <tr>
@@ -37,7 +37,18 @@
 
                                 </td>
                                 <td>
-                                    <p><%#Eval("Cantidad") %></p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <asp:Button ID="BtnRestar" Text="-" CssClass="btn btn-primary" runat="server" />
+                                        </div>
+                                        <div class="col">
+                                            <p><%#Eval("Cantidad") %></p>
+                                        </div>
+                                        <div class="col">
+                                            <asp:Button ID="btnSumar" Text="+" CssClass="btn btn-primary" runat="server" />
+                                        </div>
+                                        <asp:Button ID="btnBorrar" Text="Borrar" CssClass="btn btn-primary" runat="server" />
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -48,7 +59,7 @@
                         <td colspan="2">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">Total</h5>
-                                <asp:label ID="lblTotal" runat="server" Text=""></asp:label>
+                                <asp:Label ID="lblTotal" runat="server" Text=""></asp:Label>
                             </div>
                         </td>
                     </tr>
