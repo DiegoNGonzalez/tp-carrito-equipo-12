@@ -63,19 +63,31 @@ namespace Carrito
                 int id = Convert.ToInt32(Session["idArticuloAgregar"]);
                 Articulo auxArticuloId = articulos.Find(x => x.IDArticulo == id);
                 bool existe = ExisteEnCarrito(id);
+                //en este if verifica si el articulo ya esta en el carrito y si es asi aumenta la cantidad y el subtotal
                 if (existe)
                 {
                     ArticuloEnCarrito auxArticuloEnCarrito = articulosEnCarrito.Find(x => x.IDArticulo == id);
                     auxArticuloEnCarrito.Cantidad++;
                     auxArticuloEnCarrito.Subtotal = auxArticuloEnCarrito.Cantidad * auxArticuloEnCarrito.PrecioArticulo;
                     Session.Add("articulosEnCarrito", articulosEnCarrito);
+
+                    Decimal auxSubtotal= auxArticuloEnCarrito.Subtotal;
+                    Decimal subTotalEnSession = Convert.ToDecimal(Session["SubTotalArticulos"]);
+                    Session["SubTotalArticulos"] = subTotalEnSession + auxSubtotal;
+                    
+                    
                     return;
                 }
-                else
+                else //si no esta en el carrito lo agrega
                 {
                     ArticuloEnCarrito articuloEnCarrito = new ArticuloEnCarrito(auxArticuloId);
                     articulosEnCarrito.Add(articuloEnCarrito);
                     Session.Add("articulosEnCarrito", articulosEnCarrito);
+
+                    Decimal auxSubtotal = articuloEnCarrito.Subtotal;
+                    Decimal subTotalEnSession = Convert.ToDecimal(Session["SubTotalArticulos"]);
+                    Session["SubTotalArticulos"] = subTotalEnSession + auxSubtotal;
+
                 }
                    
 
@@ -89,6 +101,9 @@ namespace Carrito
                 ArticuloEnCarrito articuloEnCarrito = new ArticuloEnCarrito(auxArticuloId);
                 articulosEnCarrito.Add(articuloEnCarrito);
                 Session.Add("articulosEnCarrito", articulosEnCarrito);
+
+                Decimal auxSubtotal = articuloEnCarrito.Subtotal;
+                Session.Add("SubTotalArticulos", auxSubtotal);
             }
             
 
@@ -105,5 +120,6 @@ namespace Carrito
             }
             return false;
         }
+        
     }
 }

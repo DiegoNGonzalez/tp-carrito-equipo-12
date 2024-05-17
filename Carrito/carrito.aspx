@@ -19,7 +19,7 @@
                         <th scope="col">Cantidad</th>
                     </tr>
                 </thead>
-                <asp:Repeater ID="rptArticulosEnCarrito" runat="server" OnItemDataBound="rptArticulosEnCarrito_ItemDataBound">
+                <asp:Repeater ID="rptArticulosEnCarrito" runat="server" >
                     <ItemTemplate>
                         <tbody>
                             <tr>
@@ -48,7 +48,7 @@
                         <td colspan="2">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">Total</h5>
-                                <small class="text-right">$<%= Total %></small>
+                                <asp:label ID="lblTotal" runat="server" Text=""></asp:label>
                             </div>
                         </td>
                     </tr>
