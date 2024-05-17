@@ -41,5 +41,23 @@ namespace Carrito
             Session["SubTotalArticulos"] = Session["SubTotalArticulos"] != null ? auxArticulo.PrecioArticulo + Convert.ToDecimal(Session["SubTotalArticulos"]) : 0;
             Response.Redirect("carrito.aspx", false);
         }
+
+        protected void BtnRestar_Click(object sender, EventArgs e)
+        {
+            int contadorArticulos;
+            string valor = ((Button)sender).CommandArgument;
+            articulosEnCarrito = (List<ArticuloEnCarrito>)Session["articulosEnCarrito"];
+            ArticuloEnCarrito auxArticulo = articulosEnCarrito.Find(articulosEnCarrito => articulosEnCarrito.IDArticulo == Convert.ToInt32(valor));
+            if (auxArticulo.Cantidad > 1)
+            {
+                auxArticulo.Cantidad = auxArticulo.Cantidad - 1;
+                auxArticulo.Subtotal = auxArticulo.PrecioArticulo * auxArticulo.Cantidad;
+                contadorArticulos = Session["ContadorArticulos"] != null ? Convert.ToInt32(Session["ContadorArticulos"]) - 1 : 1;
+                Session.Add("ContadorArticulos", contadorArticulos);
+                Session["SubTotalArticulos"] = Session["SubTotalArticulos"] != null ? Convert.ToDecimal(Session["SubTotalArticulos"]) - auxArticulo.PrecioArticulo : 0;
+                Response.Redirect("carrito.aspx", false);
+            }
+            
+        }
     }
 }

@@ -38,7 +38,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col">
-                                            <asp:Button ID="BtnRestar" Text="-" CssClass="btn btn-primary" runat="server" />
+                                            <asp:Button ID="BtnRestar" Text="-" CssClass="btn btn-primary" CommandArgument='<%#Eval("IDArticulo") %>' CommandName="ArticuloRestar" OnClick="BtnRestar_Click" runat="server" />
                                         </div>
                                         <div class="col">
                                             <p><%#Eval("Cantidad") %></p>
