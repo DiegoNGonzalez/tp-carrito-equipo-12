@@ -33,14 +33,20 @@
                                     <p class="mb-1"><%# Eval("DescripcionArticulo") %></p>
                                 </td>
                                 <td>
-                                    <p class="mb-1">$<%# Eval("SubTotal") %></p>
+                                    <small>$<asp:Literal ID="litSubtotal" runat="server" Text='<%# Eval("Subtotal") %>'></asp:Literal></small>
                                 </td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-primary" Text="Agregar" />
-                                        <h5 class="mb-1" style="margin-top: 5px; margin-left: 15px; margin-right: 15px;"><%# Eval("Cantidad") %></h5>
-                                        <asp:Button ID="btnEliminarCarrito" runat="server" CssClass="btn btn-primary" Text="Eliminar" />
-                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <asp:Button ID="BtnRestar" Text="-" CssClass="btn btn-primary" runat="server" />
+                                        </div>
+                                        <div class="col">
+                                            <p><%#Eval("Cantidad") %></p>
+                                        </div>
+                                        <div class="col">
+                                            <asp:Button ID="btnSumar" Text="+" CssClass="btn btn-primary" CommandArgument='<%#Eval("IDArticulo") %>' CommandName="ArticuloID" OnClick="btnSumar_Click" runat="server" />
+                                        </div>
+                                        <asp:Button ID="btnBorrar" Text="Borrar" CssClass="btn btn-primary" runat="server" />
                                 </td>
                             </tr>
                         </tbody>
