@@ -46,7 +46,7 @@
                                         <div class="col">
                                             <asp:Button ID="btnSumar" Text="+" CssClass="btn btn-primary" CommandArgument='<%#Eval("IDArticulo") %>' CommandName="ArticuloID" OnClick="btnSumar_Click" runat="server" />
                                         </div>
-                                        <asp:Button ID="btnBorrar" Text="Borrar" CssClass="btn btn-primary" runat="server" />
+                                        <asp:Button ID="btnBorrar" Text="Borrar" CssClass="btn btn-primary" CommandArgument='<%#Eval("IDArticulo") %>' CommandName="ArticuloBorrar" OnClick="btnBorrar_Click" runat="server" />
                                 </td>
                             </tr>
                         </tbody>
