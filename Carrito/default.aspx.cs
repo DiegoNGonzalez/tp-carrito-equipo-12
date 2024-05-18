@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using dominio;
 using AccesoDataBase;
 using Negocio;
+using System.Web.UI.HtmlControls;
 
 namespace Carrito
 {
@@ -17,26 +18,60 @@ namespace Carrito
         private ArticuloNegocio negocio = new ArticuloNegocio();
         public Label contadorCarrito = new Label();
         public int contadorArticulos = 0;
+        public List<Marca> marcas = new List<Marca>();
+        public List<Categoria> categorias = new List<Categoria>();
+        private MarcaNegocio marcaNegocio = new MarcaNegocio();
+        private CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-            negocio = new ArticuloNegocio();
-            articulos = negocio.ListarArticulos();
-            rptArticulos.DataSource = articulos;
-            rptArticulos.DataBind();
-            Session.Add("articulos", articulos);
+                negocio = new ArticuloNegocio();
+                marcaNegocio = new MarcaNegocio();
+                categoriaNegocio = new CategoriaNegocio();
+                marcas = marcaNegocio.ListarMarcas();
+                categorias = categoriaNegocio.listarCategorias();
+                articulos = negocio.ListarArticulos();
+                rptArticulos.DataSource = articulos;
+                rptArticulos.DataBind();
+                Session.Add("articulos", articulos);
+                Filtrado.Visible = false;
+                cargarDropDowns();
+                
+
             }
             contadorCarrito = (Label)Master.FindControl("contadorCarrito");
-            
-            
         }
 
 
 
-        protected void btnAgregar_Click(object sender, EventArgs e)
+        protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            
+
+            List<Articulo> lista = (List<Articulo>)Session["articulos"];
+            int idMarca = Convert.ToInt32(ddlMarcas.SelectedValue);
+            int idCategoria = Convert.ToInt32(ddlCategorias.SelectedValue);
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.MarcaArticulo.IDMarca == idMarca || x.CategoriaArticulo.IDCategoria == idCategoria);
+            rptArticulos.DataSource = listaFiltrada;
+            rptArticulos.DataBind();
+        }
+
+        protected void btnOrdenar_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void chkFiltrar_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (chkFiltrar.Checked)
+            {
+                Filtrado.Visible = true;
+            }
+            else
+            {
+                Filtrado.Visible = false;
+            }
+
         }
         protected void rptArticulos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -44,7 +79,8 @@ namespace Carrito
             {
                 string idArticulo = e.CommandArgument.ToString();
                 Response.Redirect("VerDetalle.aspx?idArticulo=" + idArticulo, false);
-            } else if(e.CommandName == "Agregar")
+            }
+            else if (e.CommandName == "Agregar")
             {
                 string idArticulo = e.CommandArgument.ToString();
                 Session.Add("idArticuloAgregar", idArticulo);
@@ -72,8 +108,8 @@ namespace Carrito
                     Session.Add("articulosEnCarrito", articulosEnCarrito);
                     Decimal subTotalEnSession = Convert.ToDecimal(Session["SubTotalArticulos"]);
                     Session["SubTotalArticulos"] = subTotalEnSession + auxArticuloEnCarrito.PrecioArticulo;
-                    
-                    
+
+
                     return;
                 }
                 else //si no esta en el carrito lo agrega
@@ -87,10 +123,11 @@ namespace Carrito
                     Session["SubTotalArticulos"] = subTotalEnSession + auxSubtotal;
 
                 }
-                   
 
 
-            }else
+
+            }
+            else
             {
                 articulos = (List<Articulo>)Session["articulos"];
                 int id = Convert.ToInt32(Session["idArticuloAgregar"]);
@@ -103,7 +140,7 @@ namespace Carrito
                 Decimal auxSubtotal = articuloEnCarrito.Subtotal;
                 Session.Add("SubTotalArticulos", auxSubtotal);
             }
-            
+
 
         }
         public bool ExisteEnCarrito(int id)
@@ -123,7 +160,7 @@ namespace Carrito
         {
             string busqueda = txtBuscar.Text;
             List<Articulo> lista = (List<Articulo>)Session["articulos"];
-            List<Articulo> listaFiltrada = lista.FindAll(x => x.NombreArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.DescripcionArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.MarcaArticulo.NombreMarca.Contains(busqueda.ToUpper())|| x.CategoriaArticulo.NombreCategoria.Contains(busqueda.ToUpper()));
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.NombreArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.DescripcionArticulo.ToUpper().Contains(busqueda.ToUpper()) || x.MarcaArticulo.NombreMarca.Contains(busqueda.ToUpper()) || x.CategoriaArticulo.NombreCategoria.Contains(busqueda.ToUpper()));
             if (listaFiltrada.Count == 0)
             {
                 lblMensaje.Text = "No se encontraron resultados";
@@ -144,6 +181,24 @@ namespace Carrito
             rptArticulos.DataBind();
             lblMensaje.Text = "";
         }
-        
+        public void cargarDropDowns()
+        {
+            Marca aux = new Marca();
+            aux.IDMarca = 0;
+            aux.NombreMarca = "Todas";
+            marcas.Insert(0, aux);
+            Categoria aux2 = new Categoria();
+            aux2.IDCategoria = 0;
+            aux2.NombreCategoria = "Todas";
+            categorias.Insert(0, aux2);
+            ddlCategorias.DataSource = categorias;
+            ddlCategorias.DataTextField = "NombreCategoria";
+            ddlCategorias.DataValueField = "IDCategoria";
+            ddlCategorias.DataBind();
+            ddlMarcas.DataSource = marcas;
+            ddlMarcas.DataTextField = "NombreMarca";
+            ddlMarcas.DataValueField = "IDMarca";
+            ddlMarcas.DataBind();
+        }
     }
 }

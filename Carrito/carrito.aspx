@@ -57,7 +57,7 @@
                         <td colspan="2">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">Total</h5>
-                                <asp:Label ID="lblTotal" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="lblTotal" runat="server" Text="">$</asp:Label>
                             </div>
                         </td>
                     </tr>
