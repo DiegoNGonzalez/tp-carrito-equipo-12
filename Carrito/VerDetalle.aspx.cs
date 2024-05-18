@@ -16,6 +16,7 @@ namespace Carrito
     {
         public List<Articulo> articulos = new List<Articulo>();
         public List<ArticuloEnCarrito> articulosEnCarrito = new List<ArticuloEnCarrito>();
+        public List<Imagen> imagenes = new List<Imagen>();
         private ArticuloNegocio negocio = new ArticuloNegocio();
         public int contadorArticulos = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -31,15 +32,9 @@ namespace Carrito
                     lblDescripcion.Text = articulo.DescripcionArticulo;
                     lblMarca.Text = articulo.MarcaArticulo.NombreMarca;
                     lblPrecio.Text = articulo.PrecioArticulo.ToString();
-
-                    if (articulo.Imagenes != null && articulo.Imagenes.Count > 0)
-                    {
-                        imgArticulo.ImageUrl = articulo.Imagenes[0].URLImagen;
-                    }
-                    else
-                    {
-                        imgArticulo.ImageUrl = "~/Images/imagen_por_defecto.jpg";
-                    }
+                    imagenes = articulo.Imagenes;
+                    rptImagenes.DataSource = imagenes;
+                    rptImagenes.DataBind();
                 }
             }
         }
