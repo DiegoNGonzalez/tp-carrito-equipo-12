@@ -70,10 +70,8 @@ namespace Carrito
                     auxArticuloEnCarrito.Cantidad++;
                     auxArticuloEnCarrito.Subtotal = auxArticuloEnCarrito.Cantidad * auxArticuloEnCarrito.PrecioArticulo;
                     Session.Add("articulosEnCarrito", articulosEnCarrito);
-
-                    Decimal auxSubtotal= auxArticuloEnCarrito.Subtotal;
                     Decimal subTotalEnSession = Convert.ToDecimal(Session["SubTotalArticulos"]);
-                    Session["SubTotalArticulos"] = subTotalEnSession + auxSubtotal;
+                    Session["SubTotalArticulos"] = subTotalEnSession + auxArticuloEnCarrito.PrecioArticulo;
                     
                     
                     return;
