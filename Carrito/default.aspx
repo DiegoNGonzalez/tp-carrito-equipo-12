@@ -39,7 +39,7 @@
                 <asp:Repeater ID="rptArticulos" runat="server" OnItemCommand="rptArticulos_ItemCommand">
                     <ItemTemplate>
                         <div class="card card-lev text-center shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem; margin-right: auto; margin-left: auto; display: flex; flex-direction: column;">
-                            <img src='<%# Eval("Imagenes[0].URLImagen") %>' class="card-img-top" alt="...">
+                            <img src='<%# Eval("Imagenes[0].URLImagen") %>'onerror="this.onerror=null; this.src='https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg?w=826';" class="card-img-top" alt="...">
                             <div class="card-body" style="flex: 1 0 auto; display: flex; flex-direction: column; justify-content: flex-End;">
                                 <div>
                                     <h5 class="card-title"><%# Eval("NombreArticulo") %></h5>

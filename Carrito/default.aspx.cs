@@ -83,6 +83,7 @@ namespace Carrito
             }
             else if (idMarca != 0 && idCategoria != 0)
             {
+                
                 List<Articulo> listaFiltrada = lista.FindAll(x => x.MarcaArticulo.IDMarca == idMarca && x.CategoriaArticulo.IDCategoria == idCategoria);
                 rptArticulos.DataSource = listaFiltrada;
                 rptArticulos.DataBind();

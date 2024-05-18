@@ -43,7 +43,8 @@ namespace Negocio
                     aux.CodigoArticulo = (string)Datos.Lector["Codigo"];
                     aux.NombreArticulo = (string)Datos.Lector["Nombre"];
                     aux.DescripcionArticulo = (string)Datos.Lector["Descripcion"];
-                    aux.PrecioArticulo = (decimal)Datos.Lector["Precio"];
+                    decimal auxPrecio = (decimal)Datos.Lector["Precio"];
+                    aux.PrecioArticulo = Math.Round(auxPrecio, 2);
                     aux.MarcaArticulo = new Marca();
                     aux.MarcaArticulo.IDMarca = (int)Datos.Lector["IdMarca"];
                     aux.MarcaArticulo.NombreMarca = (string)Datos.Lector["Marca"];

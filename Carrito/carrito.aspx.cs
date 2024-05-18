@@ -25,7 +25,9 @@ namespace Carrito
                 rptArticulosEnCarrito.DataSource = articulosEnCarrito;
                 rptArticulosEnCarrito.DataBind();
             }
-                lblTotal.Text= Session["SubTotalArticulos"] != null ? Session["SubTotalArticulos"].ToString() : "0";
+            decimal subtotal = Session["SubTotalArticulos"] != null ? Convert.ToDecimal(Session["SubTotalArticulos"]) : 0;
+            string total = subtotal.ToString("F2");
+            lblTotal.Text = "$"+ total;
         }
 
         protected void btnSumar_Click(object sender, EventArgs e)
