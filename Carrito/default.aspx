@@ -8,18 +8,16 @@
             <div class="text-center mb-4">
                 <h1 class="fs-1">Articulos</h1>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" />
-                    <label>Buscar por nombre o descripción</label>
+            <div class="row mb-5 text-center justify-content-center">
+                <div class="col-md-3">
+                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" Placeholder="Busqueda de articulos..."/>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn btn-primary" OnClick="btnLimpiar_Click" />
                 </div>
                 <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger"></asp:Label>
              </div>
-
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
 
                 <asp:Repeater ID="rptArticulos" runat="server" OnItemCommand="rptArticulos_ItemCommand">
