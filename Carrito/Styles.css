@@ -1,0 +1,20 @@
+﻿body {
+    background-image: linear-gradient(to right bottom, #512da8, #4a32a7, #4436a6, #3d39a4, #373ca2, #294cad, #175bb6, #0069be, #0084c8, #0098b1, #00a683, #4caf50);
+}
+.custom-navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 70%;
+    background: #673AB7;
+}
+.custom-navbar img {
+    height: 40px;
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 1.5rem; 
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    padding: 0.25rem 0.5rem;
+}

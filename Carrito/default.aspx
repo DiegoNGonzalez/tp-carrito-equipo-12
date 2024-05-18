@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="EstilosDefault.css" rel="stylesheet" />
     <div class="container">
-        <div class="text-center mb-4 text-decoration-underline">
-            <h1 class="fs-1">Articulos</h1>
+        <div class="text-center text-white mb-4">
+            <h1 class="fs-1 fw-normal text-decoration-underline">Articulos</h1>
         </div>
         <div class="row mb-5 text-center justify-content-center">
             <div class="col-md-3">

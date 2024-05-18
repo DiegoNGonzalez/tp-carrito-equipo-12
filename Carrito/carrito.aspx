@@ -6,8 +6,8 @@
 
    <div class="container">
 
-    <h1 class="text-center mb-4 text-decoration-underline">Carrito de compras</h1>
-    <p class="mb-4 fw-bold">Estos son los productos que has agregado al carrito de compras:</p>
+    <h1 class="text-center mb-4 text-decoration-underline text-white fw-normal">Carrito de compras</h1>
+    <p class="mb-4 fw-semibold text-white">Estos son los productos que has agregado al carrito de compras:</p>
     <div class="table-responsive">
 
         <table class="table">
