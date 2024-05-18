@@ -1,26 +1,75 @@
 ﻿body {
-    background-image: linear-gradient(to top, #2e146d, #381b7a, #432288, #4d2996, #5830a4, #6235b0, #6c3abd, #773fc9, #8343d7, #9046e4, #9d4af2, #aa4dff);
+    background: #212529;
 }
+
 .custom-navbar {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     width: 70%;
     background-image: linear-gradient(to right bottom, #512da8, #5c36b0, #673fb8, #7249c1, #7d52c9);
 }
-.custom-navbar img {
-    height: 40px;
-}
 
-.custom-navbar .navbar-brand {
-    font-size: 1.5rem; 
-}
+    .custom-navbar img {
+        height: 40px;
+    }
 
-.custom-navbar .navbar-nav .nav-link {
-    padding: 0.25rem 0.5rem;
-}
-.carritoContainer{
+    .custom-navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .custom-navbar .navbar-nav .nav-link {
+        padding: 0.25rem 0.5rem;
+    }
+
+.carritoContainer {
     min-height: 100vh;
 }
-.detalleContainer{
+
+.detalleContainer {
     min-height: 100vh;
+}
+
+.card {
+    background: #2a3035 !important;
+    color: white;
+
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right bottom, #512da8, #5c36b0, #673fb8, #7249c1, #7d52c9);
+    color: white;
+    border: 1px solid black;
+}
+
+    .btn-primary:hover {
+        border: 1px solid white !important;
+    }
+
+.card-footer {
+    background: #303337 !important;
+    color: white;
+}
+
+.card-lev {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-lev:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgb(81,45,168) !important;
+        border-color: #512DA8 ;
+}
+.bg-primary{
+    background-image: linear-gradient(to right bottom, #512da8, #5c36b0, #673fb8, #7249c1, #7d52c9);
+    color : white;
+}
+.fondoCard {
+    background: #303337 !important;
+    color: white;
+}
+.liMedio {
+    border: 0.5px solid #212529;
+}
+.card-body{
+    border :#212529;
 }

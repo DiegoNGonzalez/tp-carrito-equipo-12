@@ -54,7 +54,7 @@
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <div class="d-flex w-100 justify-content-between">
+                        <div class="d-flex justify-content-between">
                             <h5 class="mb-1">Total</h5>
                             <asp:Label ID="lblTotal" cssclass="fs-5" runat="server" Text="">$</asp:Label>
                         </div>

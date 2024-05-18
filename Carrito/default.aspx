@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="EstilosDefault.css" rel="stylesheet" />
     <div class="container">
         <div class="text-center text-white mb-4">
             <h1 class="fs-1 fw-normal text-decoration-underline">Articulos</h1>
@@ -21,7 +20,7 @@
         </div>
         <div class="bg-primary rounded mb-5" style="width:80px;">
             <asp:CheckBox ID="chkFiltrar" runat="server" cssclass="px-1 ms-1" OnCheckedChanged="chkFiltrar_CheckedChanged" AutoPostBack="True" />
-            <label class="form-check-label text-white" for="chkFiltrar">Filtrar</label>
+            <asp:Label class="form-check-label text-white" runat="server" for="chkFiltrar">Filtrar</asp:Label>
         </div>
         <div class="row mb-5 text-center justify-content-center" id="Filtrado" runat="server">
 
