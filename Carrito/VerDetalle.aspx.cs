@@ -32,7 +32,10 @@ namespace Carrito
                     lblNombre.Text = articulo.NombreArticulo;
                     lblDescripcion.Text = articulo.DescripcionArticulo;
                     lblMarca.Text = articulo.MarcaArticulo.NombreMarca;
-                    lblPrecio.Text = articulo.PrecioArticulo.ToString();
+                    lblCategoria.Text = articulo.CategoriaArticulo.NombreCategoria;
+                    decimal auxPrecio = articulo.PrecioArticulo;
+                    string precio = auxPrecio.ToString("F2");
+                    lblPrecio.Text = "$"+precio;
                     imagenes = articulo.Imagenes;
                     rptImagenes.DataSource = imagenes;
                     rptImagenes.DataBind();

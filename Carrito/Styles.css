@@ -1,11 +1,11 @@
 ﻿body {
-    background-image: linear-gradient(to right bottom, #512da8, #4a32a7, #4436a6, #3d39a4, #373ca2, #294cad, #175bb6, #0069be, #0084c8, #0098b1, #00a683, #4caf50);
+    background-image: linear-gradient(to top, #2e146d, #381b7a, #432288, #4d2996, #5830a4, #6235b0, #6c3abd, #773fc9, #8343d7, #9046e4, #9d4af2, #aa4dff);
 }
 .custom-navbar {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     width: 70%;
-    background: #673AB7;
+    background-image: linear-gradient(to right bottom, #512da8, #5c36b0, #673fb8, #7249c1, #7d52c9);
 }
 .custom-navbar img {
     height: 40px;
@@ -17,4 +17,10 @@
 
 .custom-navbar .navbar-nav .nav-link {
     padding: 0.25rem 0.5rem;
+}
+.carritoContainer{
+    min-height: 100vh;
+}
+.detalleContainer{
+    min-height: 100vh;
 }

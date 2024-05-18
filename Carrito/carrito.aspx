@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   <div class="container">
+   <div class="container carritoContainer">
 
     <h1 class="text-center mb-4 text-decoration-underline text-white fw-normal">Carrito de compras</h1>
     <p class="mb-4 fw-semibold text-white">Estos son los productos que has agregado al carrito de compras:</p>
