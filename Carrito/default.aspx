@@ -23,15 +23,6 @@
         <div class="row mb-5 text-center justify-content-center" id="Filtrado" runat="server">
             
                 <div class="col-md-4">
-                    <asp:DropDownList ID="ddlOrdenar" runat="server" CssClass="form-select mb-1">
-                        <asp:ListItem Text="Nombre" Value="1" />
-                        <asp:ListItem Text="Precio" Value="2" />
-                    </asp:DropDownList>
-                    <asp:DropDownList ID="ddlTipoOrden" runat="server" CssClass="form-select mb-1">
-                        <asp:ListItem Text="Ascendente" Value="1" />
-                        <asp:ListItem Text="Descendente" Value="2" />
-                    </asp:DropDownList>
-                    <asp:Button ID="btnOrdenar" runat="server" Text="Ordenar" CssClass="btn btn-primary" OnClick="btnOrdenar_Click" />
 
                     <asp:DropDownList ID="ddlCategorias" runat="server" CssClass="form-select mb-1">
                         <asp:ListItem Text="Todas" Value="0" />
@@ -40,6 +31,7 @@
                         <asp:ListItem Text="Todas" Value="0" />
                     </asp:DropDownList>
                     <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-primary" OnClick="btnFiltrar_Click" />
+                    <asp:Button ID="btnLimpiarFiltro" runat="server" Text="Limpiar" CssClass="btn btn-primary" OnClick="btnLimpiarFiltro_Click" />
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">

@@ -51,15 +51,58 @@ namespace Carrito
             List<Articulo> lista = (List<Articulo>)Session["articulos"];
             int idMarca = Convert.ToInt32(ddlMarcas.SelectedValue);
             int idCategoria = Convert.ToInt32(ddlCategorias.SelectedValue);
-            List<Articulo> listaFiltrada = lista.FindAll(x => x.MarcaArticulo.IDMarca == idMarca || x.CategoriaArticulo.IDCategoria == idCategoria);
-            rptArticulos.DataSource = listaFiltrada;
-            rptArticulos.DataBind();
+
+
+            if (idMarca == 0 && idCategoria == 0)
+            {
+                rptArticulos.DataSource = lista;
+                rptArticulos.DataBind();
+                return;
+            }
+            else if (idMarca == 0)
+            {
+                List<Articulo> listaFiltrada = lista.FindAll(x => x.CategoriaArticulo.IDCategoria == idCategoria);
+                rptArticulos.DataSource = listaFiltrada;
+                rptArticulos.DataBind();
+                if (listaFiltrada.Count == 0)
+                {
+                    lblMensaje.Text = "No se encontraron resultados";
+                }
+                return;
+            }
+            else if (idCategoria == 0)
+            {
+                List<Articulo> listaFiltrada = lista.FindAll(x => x.MarcaArticulo.IDMarca == idMarca);
+                rptArticulos.DataSource = listaFiltrada;
+                rptArticulos.DataBind();
+                if (listaFiltrada.Count == 0)
+                {
+                    lblMensaje.Text = "No se encontraron resultados";
+                }
+                return;
+            }
+            else if (idMarca != 0 && idCategoria != 0)
+            {
+                List<Articulo> listaFiltrada = lista.FindAll(x => x.MarcaArticulo.IDMarca == idMarca && x.CategoriaArticulo.IDCategoria == idCategoria);
+                rptArticulos.DataSource = listaFiltrada;
+                rptArticulos.DataBind();
+                if (listaFiltrada.Count == 0)
+                {
+                    lblMensaje.Text = "No se encontraron resultados";
+                }
+                return;
+            }
         }
 
-        protected void btnOrdenar_Click(object sender, EventArgs e)
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-
+            ddlCategorias.SelectedIndex = 0;
+            ddlMarcas.SelectedIndex = 0;
+            rptArticulos.DataSource = (List<Articulo>)Session["articulos"];
+            rptArticulos.DataBind();
+            lblMensaje.Text = "";
         }
+
         protected void chkFiltrar_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -70,6 +113,8 @@ namespace Carrito
             else
             {
                 Filtrado.Visible = false;
+                rptArticulos.DataSource = (List<Articulo>)Session["articulos"];
+                rptArticulos.DataBind();
             }
 
         }
