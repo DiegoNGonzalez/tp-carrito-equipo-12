@@ -25,12 +25,6 @@
                             </a>
                             <asp:Label ID="contadorCarrito" runat="server" Text="Label" CssClass="text-danger fw-bold fs-3">0</asp:Label>
                         </div>
-                        <div class="ms-auto d-flex">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                                <button class="btn btn-dark" type="submit">Buscar</button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </nav>
