@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using dominio;
 using AccesoDataBase;
 using Negocio;
+using System.Drawing;
 
 
 
@@ -45,7 +46,10 @@ namespace Carrito
             Session.Add("idArticuloAgregar", idArticulo);
             AgregarAlCarrito();
             contadorArticulos = Session["ContadorArticulos"] != null ? Convert.ToInt32(Session["ContadorArticulos"]) + 1 : 1;
-            Session.Add("ContadorArticulos", contadorArticulos);
+            Session["ContadorArticulos"] = contadorArticulos;
+            articulosEnCarrito = (List<ArticuloEnCarrito>)Session["articulosEnCarrito"];
+            ArticuloEnCarrito auxArticulo = articulosEnCarrito.Find(articulosEnCarrito => articulosEnCarrito.IDArticulo == Convert.ToInt32(idArticulo));
+            Session["SubTotalArticulos"] = Session["SubTotalArticulos"] != null ? Convert.ToDecimal(Session["SubTotalArticulos"]) + auxArticulo.PrecioArticulo : auxArticulo.PrecioArticulo;
             Response.Redirect("default.aspx", false);
         }
 
