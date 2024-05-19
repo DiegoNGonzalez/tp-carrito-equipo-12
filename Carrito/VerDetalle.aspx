@@ -9,7 +9,7 @@
         <div class="row mt-4 d-flex align-items-center justify-content-center ">
 
             <div class="col-6">
-                <div class="card" style="width: 40rem;">
+                <div class="card" style="max-width: 40rem; margin: auto;">
 
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">

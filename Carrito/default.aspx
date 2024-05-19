@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="card-footer shadow p-3 bg-body-tertiary rounded" style="display: flex; justify-content: space-around;">
-                                <asp:LinkButton ID="btnAgregar" Text="Agregar" runat="server" CssClass="btn btn-primary" CommandName="Agregar" CommandArgument='<%# Eval("IDArticulo") %>' />
+                                <asp:LinkButton ID="btnAgregar" Text="Comprar" runat="server" CssClass="btn btn-primary" CommandName="Agregar" CommandArgument='<%# Eval("IDArticulo") %>' />
                                 <asp:LinkButton ID="btnVerDetalle" Text="Ver Detalle" runat="server" CssClass="btn btn-primary" CommandName="VerDetalle" CommandArgument='<%# Eval("IDArticulo") %>' />
                             </div>
                         </div>
