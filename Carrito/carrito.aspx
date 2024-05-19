@@ -8,10 +8,10 @@
 
     <h1 class="text-center mb-4 text-decoration-underline text-white fw-normal">Carrito de compras</h1>
     <p class="mb-4 fw-semibold text-white">Estos son los productos que has agregado al carrito de compras:</p>
-    <div class="table-responsive">
+    <div class="table-responsive bg-primary">
 
         <table class="table">
-            <thead>
+            <thead >
                 <tr>
                     <th scope="col">Producto</th>
                     <th scope="col">Descripcion</th>
@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="row">
                                 <div style="width: 150px; height: 150px; overflow: hidden; display: inline-block;">
-                                    <img src="<%# Eval("Imagenes[0].URLImagen") %>" class="img-fluid" alt="...">
+                                    <img src="<%# Eval("Imagenes[0].URLImagen") %>" class="img-fluid" alt="..." onerror="this.onerror=null; this.src='https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg?w=826';">
                                 </div>
                             </th>
                             <td>
