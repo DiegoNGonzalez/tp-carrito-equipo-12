@@ -73,3 +73,6 @@
 .card-body{
     border :#212529;
 }
+a{
+    text-decoration:none !important;
+}
