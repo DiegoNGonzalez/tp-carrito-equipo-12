@@ -76,3 +76,17 @@
 a{
     text-decoration:none !important;
 }
+.centrar {
+    display: flex;
+    justify-content: center;
+}
+.txtBlanco {
+    color: white;
+    font-weight: 400;
+}
+.fondotabla {
+    background: #303337 !important;
+}
+.icon-large {
+    font-size: 2rem;
+}

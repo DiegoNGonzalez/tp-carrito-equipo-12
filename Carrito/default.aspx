@@ -5,11 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="text-center text-white mb-4">
-            <h1 class="fs-1 fw-normal text-decoration-underline">Articulos</h1>
+            <h1 class="fs-1 fw-normal text-decoration-underline">Productos</h1>
         </div>
         <div class="row mb-5 text-center justify-content-center">
             <div class="col-md-3">
-                <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" Placeholder="Busqueda de articulos..." />
+                <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" Placeholder="Busqueda de productos..." />
             </div>
             <div class="col-md-2">
                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="btnBuscar_Click" />
@@ -25,10 +25,11 @@
         <div class="row mb-5 text-center justify-content-center" id="Filtrado" runat="server">
 
             <div class="col-md-4">
-
+                <asp:Label ID="lblCategoria" runat="server" Text="Categoria" CssClass="text-white text-decoration-underline"></asp:Label>
                 <asp:DropDownList ID="ddlCategorias" runat="server" CssClass="form-select mb-1">
                     <asp:ListItem Text="Todas" Value="0" />
                 </asp:DropDownList>
+                <asp:Label ID="lblMarcas" runat="server" Text="Marca" CssClass="text-white text-decoration-underline"></asp:Label>
                 <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select mb-1">
                     <asp:ListItem Text="Todas" Value="0" />
                 </asp:DropDownList>
