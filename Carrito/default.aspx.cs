@@ -36,7 +36,8 @@ namespace Carrito
                 rptArticulos.DataBind();
                 Session.Add("articulos", articulos);
                 Filtrado.Visible = false;
-                cargarDropDowns();
+            cargarDropDowns();
+                
 
 
             }
@@ -68,6 +69,10 @@ namespace Carrito
                 {
                     lblMensaje.Text = "No se encontraron resultados";
                 }
+                else
+                {
+                    lblMensaje.Text = "";
+                }
                 return;
             }
             else if (idCategoria == 0)
@@ -78,6 +83,10 @@ namespace Carrito
                 if (listaFiltrada.Count == 0)
                 {
                     lblMensaje.Text = "No se encontraron resultados";
+                }
+                else
+                {
+                    lblMensaje.Text = "";
                 }
                 return;
             }
@@ -90,6 +99,10 @@ namespace Carrito
                 if (listaFiltrada.Count == 0)
                 {
                     lblMensaje.Text = "No se encontraron resultados";
+                }
+                else
+                {
+                    lblMensaje.Text = "";
                 }
                 return;
             }
@@ -214,6 +227,7 @@ namespace Carrito
             else
             {
                 rptArticulos.DataSource = listaFiltrada;
+                lblMensaje.Text = "";
 
             }
             rptArticulos.DataBind();
